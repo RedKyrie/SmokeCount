@@ -1,0 +1,20 @@
+﻿@model Biblioteca.Models.View.IndexViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutBasePage.cshtml";
+}
+
+@foreach (var p in Model.Pacchetti)
+{
+    <div class="card" style="float:left; margin-left: 70px; width: 18rem;">
+        <img src="~/Uploads/Pacchetti/Imgs/@p.ID_pacchetto/@p.Immagine" class="card-img-top" style="width: 200px; text-align:center" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">@p.Nome</h5>
+            @*<p class="card-text">@p.Autore</p>*@
+            <a href="@Biblioteca.Helpers.PathHelper.GetPacchettoUrl(p.ID_pacchetto)" class="btn btn-primary">Dettagli</a>
+        </div>
+    </div>
+
+}
+
+@*è la pagina principale, ha come layaut di base il layout di _LayoutBasePage*@

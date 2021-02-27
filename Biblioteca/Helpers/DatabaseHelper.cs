@@ -17,6 +17,7 @@ namespace Biblioteca.Helpers
             _connectionString = ConfigurationManager.ConnectionStrings["DbBiblioteca"].ConnectionString;
         }
 
+        #region pacchetto
         public static List<Pacchetto> GetAllPacchetti()  //visualizza tutti i libri
         {
             var pacchetto = new List<Pacchetto>();
@@ -40,5 +41,56 @@ namespace Biblioteca.Helpers
 
             return pacchetti;
         }
+        #endregion
+
+        #region utente
+        public static bool ExistsUtenteByEmail(string email)
+        {
+            using (var connection = new MySqlConnection(_connectionString))
+            {
+                var sql = "SELECT ID FROM utenti WHERE email = @email and password <>''";
+                var ID = connection.Query<int>(sql, new { email }).FirstOrDefault();
+                return ID > 0;
+            }
+        }
+
+        public static int InsertUtente(Utente utente)
+        {
+            var id = 0;
+            try
+            {
+                using (var connection = new MySqlConnection(_connectionString))
+                {
+                    var sql = "INSERT INTO utenti (nome, email, password, isprivacy) " +
+                        "VALUES (@nome,@email, @password,1); " +
+                        "SELECT LAST_INSERT_ID()";
+                    id = connection.Query<int>(sql, utente).First();
+                }
+            }
+            catch (Exception ex)
+            {
+                //TODO qui bisognerebbe loggare l'errore ex.Message
+            }
+            return id;
+        }
+
+        public static bool UpdatePassword(int ID_utente, string password)
+        {
+            try
+            {
+                using (var connection = new MySqlConnection(_connectionString))
+                {
+                    var sql = "UPDATE utenti SET password = @password WHERE id = @ID_utente";
+                    connection.Query(sql, new { ID_utente, password });
+                }
+            }
+            catch (Exception ex)
+            {
+                //TODO qui bisognerebbe loggare l'errore ex.Message
+                return false;
+            }
+            return true;
+        }
+        #endregion
     }
 }

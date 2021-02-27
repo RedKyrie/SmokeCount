@@ -1,0 +1,97 @@
+﻿@model Biblioteca.Models.View.SignUpViewModel
+
+@{
+    Layout = "~/Views/Shared/_LayoutBasePage.cshtml";
+}
+<center>
+    <h2>@Model.LabelTitolo</h2>
+</center>
+
+<title>Sign Up</title>
+@using (Html.BeginForm("SignUp", "Account", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+<div class="row">
+    <div class="col-md-2" style="background-color: blueviolet">
+        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    </div>
+    <div class="col-md-8">
+
+        <div class="mb-3">
+            <label for="formGroupExampleInput" class="form-label">@Model.LabelEmail</label>
+            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Email"
+                   @Html.TextBoxFor(t => t.Utente.Email)
+                   @Html.ValidationMessageFor(t => t.Utente.Email)
+        </div>
+
+        @*<div class="form-group">
+                <label class="form-check-label">@Model.LabelEmail</label>
+                @Html.TextBoxFor(t => t.Utente.Email, new { @class = "mia", placeholder = Model.LabelEmail, type = "email" })
+                @Html.ValidationMessageFor(t => t.Utente.Email)
+            </div>*@
+        <br />
+
+        <div class="mb-3" clas="form-group">
+            <label for="formGroupExampleInput" class="form-check-label">@Model.LabelPassword</label>
+            <input type="password" class="form-control" id="formGroupExampleInput" placeholder="Password"
+                   @Html.PasswordFor(t => t.Password, new { placeholder = Model.LabelPassword })
+                   @*Html.HiddenFor(t=>t.Utente.Password)*@
+                   @Html.ValidationMessageFor(t => t.Utente.Password)
+        </div>
+
+        @* <div class="form-group">
+            <label class="form-check-label">@Model.LabelPassword</label>
+            @Html.PasswordFor(t => t.Password, new { placeholder = Model.LabelPassword })
+            @*Html.HiddenFor(t=>t.Utente.Password)
+        @Html.ValidationMessageFor(t => t.Utente.Password)
+    </div>*@
+    <br />
+
+    <div class="mb-3">
+        <label for="formGroupExampleInput" class="form-label">@Model.LabelConfermaPassword</label>
+        <input type="password" class="form-control" id="formGroupExampleInput" placeholder="Conferma password"
+               @Html.PasswordFor(t => t.ConfermaPassword, new { placeholder = Model.LabelConfermaPassword })
+               @Html.ValidationMessageFor(t => t.ConfermaPassword)
+    </div>
+
+    @* <div class="form-group">
+            <label class="form-check-label">@Model.LabelConfermaPassword</label>
+            @Html.PasswordFor(t => t.ConfermaPassword, new { placeholder = Model.LabelConfermaPassword })
+            @Html.ValidationMessageFor(t => t.ConfermaPassword)
+        </div>*@
+    <br />
+
+    <div class="mb-3">
+        <label for="formGroupExampleInput" class="form-label">@Model.LabelNome</label>
+        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Nome utente"
+               @Html.TextBoxFor(t => t.Utente.Nome, new { placeholder = Model.LabelNome, maxlength = 255 })
+               @Html.ValidationMessageFor(t => t.Utente.Nome)
+    </div>
+
+    @*<div class="form-group">
+            <label for="Nome" class="form-check-label">@Model.LabelNome</label>
+            @Html.TextBoxFor(t => t.Utente.Nome, new { placeholder = Model.LabelNome, maxlength = 255 })
+            @Html.ValidationMessageFor(t => t.Utente.Nome)
+        </div>*@
+    <br />
+    <div class="form-check">
+        @Html.CheckBoxFor(t => t.Utente.IsPrivacy, new { @class = "form-check-input" })
+        <label for="utente_isprivacy" class="form-check-label">@Html.Raw(Model.LabelPrivacy)</label>
+        @Html.ValidationMessageFor(t => t.Utente.IsPrivacy)
+    </div>
+    <button type="submit" class="btn btn-primary">@Model.BtnRegistrazione</button>
+    @*<input type="submit" value="@Model.BtnRegistrazione" />*@
+</div>
+
+    <div class="col-md-2" style="background-color: blueviolet">
+        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    </div>
+
+</div>
+    if (!string.IsNullOrWhiteSpace(Model.Messaggio))
+    {
+        <span class="alert alert-@(Model.IsOk?"success":"danger")">@Html.Raw(Model.Messaggio)</span>
+    }
+}

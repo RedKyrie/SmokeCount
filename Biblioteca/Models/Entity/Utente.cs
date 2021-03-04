@@ -8,7 +8,7 @@ namespace Biblioteca.Models.Entity
 {
     public class Utente
     {
-
+        public int ID { get; set; }
         [Required]
         [MaxLength(255)]
         public string Nome { get; set; }

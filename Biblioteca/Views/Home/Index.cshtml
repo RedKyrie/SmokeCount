@@ -27,18 +27,16 @@
     .container {
         padding: 2px 16px;
     }
-
 </style>
 
 <title>Pacchetti</title>
 
 @foreach (var p in Model.Pacchetti)
 {
-    <div class="card" style="float:left; margin-left: 70px; width: 18rem;">
-        <img src="~/Uploads/Pacchetti/Imgs/@p.ID_pacchetto/@p.Immagine" class="card-img-top" style="width: 150px; height: 225px; text-align:center" alt="...">
+    <div class="card" style="float:left; margin-left:90px; margin-bottom: 20px; width: 200px;">
+        <img src="~/Uploads/Pacchetti/Imgs/@p.ID_pacchetto/@p.Immagine" class="card-img-top" style="width: 200px; height: 250px; text-align:center" alt="...">
         <div class="container">
             <h5><b>@p.Nome</b></h5>
-            <p>Descrizione</p>
             <a href="@Biblioteca.Helpers.PathHelper.GetPacchettoUrl(p.ID_pacchetto)" class="btn btn-primary">Dettagli</a>
         </div>
     </div>

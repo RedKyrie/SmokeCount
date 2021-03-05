@@ -143,6 +143,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AreaRiservataController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Filters\CustomActionFilters.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -155,6 +156,7 @@
     <Compile Include="Models\View\DetailViewModel.cs" />
     <Compile Include="Models\View\IndexViewModel.cs" />
     <Compile Include="Models\View\LoginViewModel.cs" />
+    <Compile Include="Models\View\ProfiloViewModel.cs" />
     <Compile Include="Models\View\SignUpViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

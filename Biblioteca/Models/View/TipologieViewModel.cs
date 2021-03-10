@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Biblioteca.Models.View
 {
-    public class IndexViewModel
+    public class TipologieViewModel
     {
     }
 }

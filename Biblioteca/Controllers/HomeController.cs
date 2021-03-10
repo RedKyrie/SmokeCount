@@ -11,12 +11,20 @@ namespace Biblioteca.Controllers
 {
     public class HomeController : Controller
     {
+
+        [HttpGet]
+        public ActionResult Index()
+        {
+            var model = new IndexViewModel();
+            return View(model);
+        }
+
         // GET: Home
         [HttpGet]  //dice che è una get
-        public ActionResult Index()  //usa le query che vengono caricate e le manda nel View.Index
+        public ActionResult Pacchetti()  //usa le query che vengono caricate e le manda nel View.Pacchetti
         {
             List<Pacchetto> pachetti = DatabaseHelper.GetAllPacchetti();
-            var model = new IndexViewModel
+            var model = new PacchettiViewModel
             {
                 Pacchetti = pachetti
             };
@@ -48,6 +56,20 @@ namespace Biblioteca.Controllers
         public ActionResult HomePage()
         {
             var model = new HomeViewModel();
+            return View(model);
+        }
+
+        [HttpGet]
+        public ActionResult Tipologie()
+        {
+            var model = new TipologieViewModel();
+            return View(model);
+        }
+
+        [HttpGet]
+        public ActionResult Heets()
+        {
+            var model = new HeetsViewModel();
             return View(model);
         }
     }

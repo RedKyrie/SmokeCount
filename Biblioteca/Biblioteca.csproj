@@ -176,6 +176,9 @@
     <Content Include="Views\AreaRiservata\Index.cshtml" />
     <Content Include="Views\Home\Tipologie.cshtml" />
     <Content Include="Views\Home\Heets.cshtml" />
+    <Content Include="Views\Shared\_LayoutBasePageRiservata.cshtml" />
+    <Content Include="Views\AreaRiservata\PacchettiRiservata.cshtml" />
+    <Content Include="Views\AreaRiservata\TipologieRiservata.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -31,6 +31,17 @@ namespace Biblioteca.Controllers
             return View(model);
         }
 
+        [HttpGet]  //dice che è una get
+        public ActionResult PacchettiRiservata()  //usa le query che vengono caricate e le manda nel View.Pacchetti
+        {
+            List<Pacchetto> pachetti = DatabaseHelper.GetAllPacchetti();
+            var model = new PacchettiViewModel
+            {
+                Pacchetti = pachetti
+            };
+            return View(model);
+        }
+
         [HttpGet]
         public ActionResult Detail(int id)  //usa le query che vengono caricate e le manda nel View.Detail
         {
@@ -61,6 +72,13 @@ namespace Biblioteca.Controllers
 
         [HttpGet]
         public ActionResult Tipologie()
+        {
+            var model = new TipologieViewModel();
+            return View(model);
+        }
+
+        [HttpGet]
+        public ActionResult TipologieRiservata()
         {
             var model = new TipologieViewModel();
             return View(model);

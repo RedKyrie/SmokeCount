@@ -6,8 +6,8 @@ using System.Web;
 
 namespace Biblioteca.Models.View
 {
-    public class HeetsViewModel
+    public class TabaccoViewModel
     {
-        public List<Heetss> Heets { get; set; }
+        public List<Tabacco> Trinciato { get; set; }
     }
 }

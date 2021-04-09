@@ -6,8 +6,9 @@ using System.Web;
 
 namespace Biblioteca.Models.View
 {
-    public class HeetsViewModel
+    public class DetailHeetsViewModel
     {
-        public List<Heetss> Heets { get; set; }
+        public Heetss Heets { get; set; }
+        public string MessaggioErrore { get; set; } //Da non usare se non neccessario
     }
 }

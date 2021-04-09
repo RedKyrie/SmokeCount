@@ -21,6 +21,15 @@ namespace Biblioteca.Helpers
             return $"/home/detail/{id}";
         }
 
+        public static string GetHeetsUrl(int id)
+        {
+            return $"/home/detailheets/{id}";
+        }
+        public static string GetTabaccoUrl(int id)
+        {
+            return $"/home/detailtabacco/{id}";
+        }
+
         public static void InitPaths()
         {
             _uploadspath = ConfigurationManager.AppSettings["uploadspath"];

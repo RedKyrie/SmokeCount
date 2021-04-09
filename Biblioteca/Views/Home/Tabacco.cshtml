@@ -1,6 +1,6 @@
-﻿@model Biblioteca.Models.View.HeetsViewModel
+﻿@model Biblioteca.Models.View.TabaccoViewModel
 @{
-    ViewBag.Title = "Heets";
+    ViewBag.Title = "Tabacco";
     Layout = "~/Views/Shared/_LayoutBasePage.cshtml";
 }
 
@@ -29,15 +29,16 @@
     }
 </style>
 
-<title>Heets</title>
+<title>Tabacco</title>
 
-@foreach (var h in Model.Heets)
+@foreach (var t in Model.Trinciato)
 {
     <div class="card" style="float:left; margin-left:90px; margin-bottom: 20px; width: 200px;">
-        <img src="~/Uploads/Heets/@h.ID/@h.Immagine" class="card-img-top" style="width: 200px; height: 250px; text-align:center" alt="...">
+        <img src="~/Uploads/Tabacco/@t.ID/@t.Immagine" class="card-img-top" style="width: 200px; height: 250px; text-align:center" alt="...">
         <div class="container">
-            <h5><b>@h.Nome</b></h5>
-            <a href="@Biblioteca.Helpers.PathHelper.GetHeetsUrl(h.ID)" class="btn btn-primary">Dettagli</a>
+            <h5><b>@t.Nome</b></h5>
+            <a href="@Biblioteca.Helpers.PathHelper.GetTabaccoUrl(t.ID)" class="btn btn-primary">Dettagli</a>
         </div>
     </div>
 }
+

@@ -17,6 +17,30 @@ namespace Biblioteca.Helpers
             _connectionString = ConfigurationManager.ConnectionStrings["DbBiblioteca"].ConnectionString;
         }
 
+        #region heets
+        public static List<Heetss> GetAllHeets()  //visualizza tutte le heets
+        {
+            var heets = new List<Heetss>();
+            using (var connectin = new MySqlConnection(_connectionString))
+            {
+                var sql = "SELECT * FROM heets";
+                heets = connectin.Query<Heetss>(sql).ToList();
+            }
+            return heets;
+        }
+
+        public static Heetss GetHeetsById(int id)  //visualizza le heets per ID
+        {
+            var heets = new Heetss();
+            using (var connectin = new MySqlConnection(_connectionString))
+            {
+                var sql = "SELECT * FROM heets WHERE ID = @ID";
+                heets = connectin.Query<Heetss>(sql, new { id }).First();
+            }
+            return heets;
+        }
+        #endregion
+
         #region pacchetto
         public static List<Pacchetto> GetAllPacchetti()  //visualizza tutti i libri
         {
@@ -100,7 +124,30 @@ namespace Biblioteca.Helpers
                 return connection.Query<Utente>(sql, new { email }).FirstOrDefault();
             }
         }
+        #endregion
 
+        #region tabacco
+        public static List<Tabacco> GetAllTabacco()  //visualizza tutte le tabacco
+        {
+            var tab = new List<Tabacco>();
+            using (var connectin = new MySqlConnection(_connectionString))
+            {
+                var sql = "SELECT * FROM tabacco";
+                tab = connectin.Query<Tabacco>(sql).ToList();
+            }
+            return tab;
+        }
+
+        public static Tabacco GetTabaccoById(int id)  //visualizza le Tabacco per ID
+        {
+            var tab = new Tabacco();
+            using (var connectin = new MySqlConnection(_connectionString))
+            {
+                var sql = "SELECT * FROM tabacco WHERE ID = @ID";
+                tab = connectin.Query<Tabacco>(sql, new { id }).First();
+            }
+            return tab;
+        }
         #endregion
     }
 }

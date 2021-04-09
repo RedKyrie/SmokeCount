@@ -150,9 +150,13 @@
     <Compile Include="Helpers\CryptoHelper.cs" />
     <Compile Include="Helpers\DatabaseHelper.cs" />
     <Compile Include="Helpers\PathHelper.cs" />
+    <Compile Include="Models\Entity\Tabacco.cs" />
     <Compile Include="Models\Entity\Heets.cs" />
     <Compile Include="Models\Entity\Pacchetto.cs" />
     <Compile Include="Models\Entity\Utente.cs" />
+    <Compile Include="Models\View\DetailTabaccoViewModel.cs" />
+    <Compile Include="Models\View\DetailHeetsViewModel.cs" />
+    <Compile Include="Models\View\TabaccoViewModel.cs" />
     <Compile Include="Models\View\HeetsViewModel.cs" />
     <Compile Include="Models\View\HomeViewModel.cs" />
     <Compile Include="Models\View\DetailViewModel.cs" />
@@ -179,6 +183,9 @@
     <Content Include="Views\Shared\_LayoutBasePageRiservata.cshtml" />
     <Content Include="Views\AreaRiservata\PacchettiRiservata.cshtml" />
     <Content Include="Views\AreaRiservata\TipologieRiservata.cshtml" />
+    <Content Include="Views\Home\DetailHeets.cshtml" />
+    <Content Include="Views\Home\DetailTabacco.cshtml" />
+    <Content Include="Views\Home\Tabacco.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,0 +1,33 @@
+﻿@model Biblioteca.Models.View.DetailTabaccoViewModel
+@{
+    Layout = "~/Views/Shared/_LayoutBasePage.cshtml";
+}
+
+
+@if (Model.Trinciato.Nome != null)
+{
+    <table>
+        <tr>
+            <td style="width:200px">
+                <img src="~/Uploads/Tabacco/@Model.Trinciato.ID/@Model.Trinciato.Immagine" width="150" />
+            </td>
+            <td>
+                <h2>@Model.Trinciato.Nome</h2>
+                <p><b>Tipologia:</b> @Model.Trinciato.Tipo</p>
+                <p><b>Prezzo:</b> @Model.Trinciato.Costo €</p>
+                <b>Dati contenuto:</b>
+                <p>Catrame: @Model.Trinciato.Catrame</p>
+                <p>Nicotina: @Model.Trinciato.Nicotina</p>
+                <p>Monossido di Carbonio: @Model.Trinciato.Monossido</p>
+                @*<p style="color:brown; text-align: left">@Model.Pacchetto.Testo</p>   *@
+            </td>
+        </tr>
+    </table>
+}
+else
+{
+    <h2>@ViewBag.Title</h2>
+    <p>@Model.MessaggioErrore</p>
+}
+
+@*è la pagina principale, ha come layaut di base il layout di _LayoutBasePage*@

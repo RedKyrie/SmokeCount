@@ -11,7 +11,6 @@ namespace Biblioteca.Controllers
 {
     public class HomeController : Controller
     {
-
         [HttpGet]
         public ActionResult Index()
         {
@@ -64,6 +63,27 @@ namespace Biblioteca.Controllers
         }
 
         [HttpGet]
+        public ActionResult DetailHeets(int id)  //usa le query che vengono caricate e le manda nel View.Detail
+        {
+            var heets = DatabaseHelper.GetHeetsById(id);
+            //prodotto.Immagine = PathHelper.GetProdottoImagePath(prodotto);
+            var model = new DetailHeetsViewModel
+            {
+                Heets = heets
+            };
+            if (heets == null)
+            {
+                model.MessaggioErrore = "Prodotto non esistente";
+                ViewBag.Title = "Errore";
+            }
+            else
+            {
+                ViewBag.Title = heets.Nome;
+            }
+            return View(model);
+        }
+
+        [HttpGet]
         public ActionResult HomePage()
         {
             var model = new HomeViewModel();
@@ -84,11 +104,48 @@ namespace Biblioteca.Controllers
             return View(model);
         }
 
-        [HttpGet]
-        public ActionResult Heets()
+        [HttpGet]  //dice che è una get
+        public ActionResult Heets()  //usa le query che vengono caricate e le manda nel View.Pacchetti
         {
-            var model = new HeetsViewModel();
+            List<Heetss> heets = DatabaseHelper.GetAllHeets();
+            var model = new HeetsViewModel
+            {
+                Heets = heets
+            };
             return View(model);
         }
+
+        [HttpGet]  //dice che è una get
+        public ActionResult Tabacco()  //usa le query che vengono caricate e le manda nel View.Pacchetti
+        {
+            List<Tabacco> trinciato = DatabaseHelper.GetAllTabacco();
+            var model = new TabaccoViewModel
+            {
+                Trinciato = trinciato
+            };
+            return View(model);
+        }
+
+        [HttpGet]
+        public ActionResult DetailTabacco(int id)  //usa le query che vengono caricate e le manda nel View.Detail
+        {
+            var trinciato = DatabaseHelper.GetTabaccoById(id);
+            //prodotto.Immagine = PathHelper.GetProdottoImagePath(prodotto);
+            var model = new DetailTabaccoViewModel
+            {
+                Trinciato = trinciato
+            };
+            if (trinciato == null)
+            {
+                model.MessaggioErrore = "Prodotto non esistente";
+                ViewBag.Title = "Errore";
+            }
+            else
+            {
+                ViewBag.Title = trinciato.Nome;
+            }
+            return View(model);
+        }
+
     }
 }

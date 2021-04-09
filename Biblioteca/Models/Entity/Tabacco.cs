@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Biblioteca.Models.Entity
 {
-    public class Heetss
+    public class Tabacco //creazione entità Pacchetto (deve avere gli stessi campi e tipi di campi della tabella del database su phpmyadmin)
     {
         public int ID { get; set; }
         public string Tipo { get; set; }
@@ -16,5 +16,6 @@ namespace Biblioteca.Models.Entity
         public string Nicotina { get; set; }
         public string Monossido { get; set; }
         public int N_sigarette { get; set; }
+        public int FK_Utenti { get; set; }
     }
 }
